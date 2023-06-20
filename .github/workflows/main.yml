@@ -10,29 +10,7 @@ jobs:
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
-        
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with:
-          server: ftp.menggenggam.asia
-          username: ${{ secrets.ftp_username }}
-          password: ${{ secrets.ftp_password }}
-          server-dir: /bid.menggenggam.asia/
-          exclude: |
-            .git/
-            node_modules/*
-            public/hot/*
-            public/storage/*
-            storage/*.key
-            vendor/*
-            .env
-            .env.backup
-            .phpunit.result.cache
-            Homestead.json
-            Homestead.yaml
-            npm-debug.log
-            yarn-error.log
-            
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -50,3 +28,25 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
         
+      - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: ftp.menggenggam.asia
+        username: ${{ secrets.ftp_username }}
+        password: ${{ secrets.ftp_password }}
+        server-dir: /bid.menggenggam.asia/
+        exclude: |
+          .git/
+          node_modules/*
+          public/hot/*
+          public/storage/*
+          storage/*.key
+          vendor/*
+          .env
+          .env.backup
+          .phpunit.result.cache
+          Homestead.json
+          Homestead.yaml
+          npm-debug.log
+          yarn-error.log
+          
