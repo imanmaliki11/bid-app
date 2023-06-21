@@ -28,12 +28,6 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
         
-      - name: npm install
-        run: npm install
-
-      - name: npm run
-        run: npm run production
-
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
@@ -47,6 +41,7 @@ jobs:
             public/hot/*
             public/storage/*
             storage/*.key
+            vendor/*
             .env
             .env.backup
             .phpunit.result.cache
