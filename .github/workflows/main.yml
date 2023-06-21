@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
-        
+
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
@@ -37,9 +37,10 @@ jobs:
           server-dir: /bid.menggenggam.asia/
           exclude: |
             .git/
-            node_modules/*
+            **/node_modules/**
             public/hot/*
-            public/storage/*
+            **/public/storage/*
+            /public/storage/*
             storage/*.key
             vendor/*
             .env
