@@ -13,5 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Auth section 
+Route::get('login', 'auth\AuthController@index')->name('login');
+Route::post('login', 'auth\AuthController@login')->name('login.post');
+Route::get('register', 'auth\AuthController@register')->name('register');
+Route::post('register/action', 'auth\AuthController@save')->name('register.post');
+Route::get('validate_email/{code}', 'auth\AuthController@validate_email')->name('email.validation');
+
 Route::get('/', 'Controller@index');
 Route::get('/artisan', 'Controller@artisan');

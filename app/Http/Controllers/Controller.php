@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 
 class Controller extends BaseController
 {
@@ -21,6 +22,7 @@ class Controller extends BaseController
     }
 
     public function index() {
+        dd(Auth::user());
         return view('welcome');
     }
 }
