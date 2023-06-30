@@ -29,6 +29,7 @@
                        placeholder="me@example.com"
                        name="email"
                        required
+                       value="{{old('email')}}"
                        />
                 <div class="small text-danger">
                     @error('email')
@@ -42,8 +43,10 @@
                 <input
                        id="password"
                        type="password"
-                       placeholder="password"
+                       placeholder="Password"
                        name="password"
+                       minlength="8"
+                       maxlength="20"
                        required
                        />
                 <div class="small text-danger">

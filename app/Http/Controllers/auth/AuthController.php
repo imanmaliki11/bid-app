@@ -48,6 +48,9 @@ class AuthController extends BaseController
             "password" => $request->password
         ])) {
             toastr()->success('Welcome, make your bid!', "Yeay!!!");
+            if(Auth::user()->email_verified_at == null) {
+                toastr()->warning("Please verify your email before you start Bid!", "Warning");
+            }
             return redirect()->to('/');
         } else {
             toastr()->error('Invalid credential, please check again!!', "Sorry");
@@ -70,6 +73,8 @@ class AuthController extends BaseController
         $user = User::create($data);
         Mail::to($user->email)
             ->send(new RegistrationVerification($user->email_token_validation . encrypt($user->email)));
+        toastr()->success("Success created your account", "Hoah!!!");
+        toastr()->info("You need to verify your email before bid any products.", "Info!!");
         return redirect()->route('login');
     }
 

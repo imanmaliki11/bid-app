@@ -29,6 +29,7 @@ class RegistrationVerification extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.auth.verify');
+        return $this->from("bid@menggenggam.asia", "Bidu One App")
+                    ->markdown('emails.auth.verify');
     }
 }

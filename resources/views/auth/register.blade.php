@@ -27,6 +27,9 @@
                            placeholder="Your Name"
                            name="name"
                            required
+                           minlength="3"
+                           maxlength="30"
+                           value="{{old('name')}}"
                            />
                     <div class="small text-danger">
                         @error('name')
@@ -42,6 +45,7 @@
                         placeholder="me@example.com"
                         name="email"
                         required
+                        value="{{old('email')}}"
                         />
                     <div class="small text-danger">
                         @error('email')
@@ -58,6 +62,8 @@
                         placeholder="password"
                         name="password"
                         required
+                        minlength="8"
+                        maxlength="20"
                         />
                     <div class="small text-danger">
                         @error('password')
@@ -74,6 +80,8 @@
                         placeholder="Confirm password"
                         name="password_confirmation"
                         required
+                        minlength="8"
+                        maxlength="20"
                         />
                     <div class="small text-danger">
                         @error('password_confirmation')
@@ -82,8 +90,8 @@
                     </div>
                 </div>
             
-                <button class="btn btn--form" type="submit" value="Log in">
-                    Log in
+                <button class="btn btn--form" type="submit" value="Create">
+                    Create
                 </button>
             </form>
 
