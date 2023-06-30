@@ -38,13 +38,20 @@ class AuthController extends BaseController
     }
 
     public function login(Request $request) {
+        $request->validate([
+            "email" => 'required|email:dns',
+            "password" => 'required|min:8'
+        ], $request->all());
+
         if(Auth::attempt([
             "email" => $request->email,
             "password" => $request->password
         ])) {
+            toastr()->success('Welcome, make your bid!', "Yeay!!!");
             return redirect()->to('/');
         } else {
-            echo "Invalid credentials";
+            toastr()->error('Invalid credential, please check again!!', "Sorry");
+            return redirect()->back();
         }
     }
 

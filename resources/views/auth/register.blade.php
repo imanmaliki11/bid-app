@@ -7,42 +7,94 @@
 
         <!-- Bootstrap CSS -->
         <link href="{{asset('scss/custom.css')}}" rel="stylesheet"> <!-- This can only change on scss file, only for global change -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/auth.css')}}">
         @yield('css')
         <title>{{isset($title) ? $title : "BID APP"}}</title>
     </head>
     <body>
-        <h3>Register</h3>
-        <form action="{{route('register.post')}}" method="POST">
-            @csrf
-            <div>
-                <input value="{{old('name')}}" type="text" name="name" id="name" placeholder="Your name" required minlength="3" maxlength="30">
-                @error('name')
-                    {{$message}}
-                @enderror
+        <div class="container">
+            <h2 class="login-title">Create Account</h2>
+        
+            <form class="login-form" action="{{route('register.post')}}" method="POST">
+                @csrf
+                <div>
+                    <label for="name">Name </label>
+                    <input
+                           id="name"
+                           type="text"
+                           placeholder="Your Name"
+                           name="name"
+                           required
+                           />
+                    <div class="small text-danger">
+                        @error('name')
+                            {{$message}}
+                        @enderror
+                    </div>
+                </div>
+                <div>
+                    <label for="email">Email </label>
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="me@example.com"
+                        name="email"
+                        required
+                        />
+                    <div class="small text-danger">
+                        @error('email')
+                            {{$message}}
+                        @enderror
+                    </div>
+                </div>
+            
+                <div>
+                    <label for="password">Password </label>
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="password"
+                        name="password"
+                        required
+                        />
+                    <div class="small text-danger">
+                        @error('password')
+                            {{$message}}
+                        @enderror
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password_confirmation">Confirm password </label>
+                    <input
+                        id="password_confirmation"
+                        type="password"
+                        placeholder="Confirm password"
+                        name="password_confirmation"
+                        required
+                        />
+                    <div class="small text-danger">
+                        @error('password_confirmation')
+                            {{$message}}
+                        @enderror
+                    </div>
+                </div>
+            
+                <button class="btn btn--form" type="submit" value="Log in">
+                    Log in
+                </button>
+            </form>
+
+            <div class="text-center mt-2">
+                <a href="{{route('login')}}">Already have an account</a>
             </div>
-            <div>
-                <input value="{{old('email')}}" type="email" name="email" id="email" placeholder="name@domain.com" required>
-                @error('email')
-                    {{$message}}
-                @enderror
-            </div>
-            <div>
-                <input value="{{old('password')}}" type="password" name="password" id="password" placeholder="Password" required minlength="8" maxlength="20">
-                @error('password')
-                    {{$message}}
-                @enderror
-            </div>
-            <div>
-                <input value="{{old('password_confirmation')}}" type="password" name="password_confirmation" id="cpassword" placeholder="Confirm password" required minlength="8" maxlength="20">
-                @error('password_confirmation')
-                    {{$message}}
-                @enderror
-            </div>
-            <button type="submit">Create</button>
-        </form>
+        </div>
+
         {{-- Javascript  --}}
         <script src="{{asset('bootstrap/dist/js/bootstrap.bundle.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script src="{{asset('js/script.js')}}"></script>
         @yield('js')
     </body>

@@ -22,7 +22,6 @@ class Controller extends BaseController
     }
 
     public function index() {
-        dd(Auth::user());
         return view('welcome');
     }
 }
