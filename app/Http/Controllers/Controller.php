@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\models\Product;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -22,6 +23,7 @@ class Controller extends BaseController
     }
 
     public function index() {
-        return view('welcome');
+        $data["lates"] = Product::orderBy('created_at', 'desc')->limit(10)->get();
+        return view('home.home', $data);
     }
 }

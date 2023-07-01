@@ -20,5 +20,13 @@ Route::get('register', 'auth\AuthController@register')->name('register');
 Route::post('register/action', 'auth\AuthController@save')->name('register.post');
 Route::get('validate_email/{code}', 'auth\AuthController@validate_email')->name('email.validation');
 
+
+
+//Product section
+Route::group(["middleware" => "auth", "prefix" => "product"], function() {
+    Route::get("add", "ProductController@add")->name("add.product");
+    Route::post("add", "ProductController@store")->name("add.product.post");
+});
+
 Route::get('/', 'Controller@index');
 Route::get('/artisan', 'Controller@artisan');

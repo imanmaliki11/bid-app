@@ -1,0 +1,13 @@
+.navbar {
+    background-color: #fbdb89 !important;
+    box-shadow: 0 4px 10px 0 #00000030;
+}
+
+.navbar input {
+    border-radius: 1rem 0 0 1rem;
+    margin-right: 0 !important;
+}
+
+.navbar button.search {
+    border-radius: 0 1rem 1rem 0;
+}
